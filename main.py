@@ -9,7 +9,6 @@ app = FastAPI()
 ########################
 
 class Person(BaseModel):
-    id:int
     name: str
     mobile: str
     message: str
@@ -37,7 +36,6 @@ async def create_person(person: Person):
     cur.execute(sql)
     conn.commit()
     return person
-
 
 
 ########################
