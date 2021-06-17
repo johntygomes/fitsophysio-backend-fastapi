@@ -59,10 +59,10 @@ async def create_person(person: Person):
 
 ###############################################EXAMPLE USER POST TO API
 
-{
-    "name": "Saswat",
-    "mobile": "8108413675",
-    "message": "Wonderful Experience At Fitphysio"
-}
+# {
+#     "name": "Saswat",
+#     "mobile": "8108413675",
+#     "message": "Wonderful Experience At Fitphysio"
+# }
 
 
