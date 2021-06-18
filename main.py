@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Form
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 ########################DATABASE################
@@ -54,8 +54,20 @@ async def create_person(person: Person):
     cur.execute(sql)
     conn.commit()
     return person
-
-
+###########################
+@app.post("/create_patient_2/")
+async def create_patient(name: str = Form(...), mobile: str = Form(...), message: str = Form(...)):
+    global conn
+    sql = "SELECT * FROM ContactDetails;"
+    cur = conn.cursor()
+    cur.execute(sql)
+    generated_id=1
+    for record in cur:
+        generated_id = generated_id + 1
+    sql = (f"INSERT INTO ContactDetails (id, patient_name, patient_mobile, patient_message) VALUES ('%d','%s', '%s', '%s');"%(generated_id, name, mobile , message))
+    cur.execute(sql)
+    conn.commit()
+    return {"name": name}
 ########################
 
 
